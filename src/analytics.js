@@ -1,4 +1,6 @@
-﻿export function initAnalyticsFromMeta() {
+import { inject } from '@vercel/analytics';
+
+export function initAnalyticsFromMeta() {
   try {
     const meta = document.querySelector('meta[name="ga-measurement-id"]');
     const id = (meta && meta.getAttribute('content') ? meta.getAttribute('content') : '').trim();
@@ -26,5 +28,14 @@
     });
   } catch {
     // No-op
+  }
+}
+
+// Initialize Vercel Web Analytics
+export function initVercelAnalytics() {
+  try {
+    inject();
+  } catch {
+    // No-op - analytics is optional
   }
 }
