@@ -1,4 +1,5 @@
 import { inject } from '@vercel/analytics';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 
 export function initAnalyticsFromMeta() {
   try {
@@ -37,5 +38,14 @@ export function initVercelAnalytics() {
     inject();
   } catch {
     // No-op - analytics is optional
+  }
+}
+
+// Initialize Vercel Speed Insights
+export function initVercelSpeedInsights() {
+  try {
+    injectSpeedInsights();
+  } catch {
+    // No-op - speed insights is optional
   }
 }
