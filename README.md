@@ -62,7 +62,7 @@ To enable:
 2. Navigate to your project's Analytics section in the Vercel dashboard
 3. Click the "Enable" button
 
-The analytics tracking code is integrated via the `@vercel/analytics` package and initialized in `src/analytics.js`.
+The analytics tracking code is loaded via Vercel's runtime scripts (`/_vercel/insights/script.js` and `/_vercel/speed-insights/script.js`) and initialized in `src/analytics.js` (no bundler/package required).
 
 ### Google Analytics 4 (Optional)
 

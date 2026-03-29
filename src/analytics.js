@@ -1,6 +1,3 @@
-import { inject } from '@vercel/analytics';
-import { injectSpeedInsights } from '@vercel/speed-insights';
-
 export function initAnalyticsFromMeta() {
   try {
     const meta = document.querySelector('meta[name="ga-measurement-id"]');
@@ -32,19 +29,41 @@ export function initAnalyticsFromMeta() {
   }
 }
 
-// Initialize Vercel Web Analytics
+function ensureScript(src) {
+  if (document.querySelector(`script[src="${src}"]`)) return;
+  const s = document.createElement('script');
+  s.defer = true;
+  s.src = src;
+  document.head.appendChild(s);
+}
+
+// Initialize Vercel Web Analytics (works without a bundler).
 export function initVercelAnalytics() {
   try {
-    inject();
+    window.va =
+      window.va ||
+      function () {
+        window.vaq = window.vaq || [];
+        // eslint-disable-next-line prefer-rest-params
+        window.vaq.push(arguments);
+      };
+    ensureScript('/_vercel/insights/script.js');
   } catch {
-    // No-op - analytics is optional
+    // No-op - insights are optional
   }
 }
 
 // Initialize Vercel Speed Insights
 export function initVercelSpeedInsights() {
   try {
-    injectSpeedInsights();
+    window.si =
+      window.si ||
+      function () {
+        window.siq = window.siq || [];
+        // eslint-disable-next-line prefer-rest-params
+        window.siq.push(arguments);
+      };
+    ensureScript('/_vercel/speed-insights/script.js');
   } catch {
     // No-op - speed insights is optional
   }
