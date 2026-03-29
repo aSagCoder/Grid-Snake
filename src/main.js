@@ -1,4 +1,4 @@
-import { initAnalyticsFromMeta, initVercelAnalytics } from './analytics.js';
+import { initAnalyticsFromMeta, initVercelAnalytics, initVercelSpeedInsights } from './analytics.js';
 import {
   createInitialState,
   step,
@@ -7,6 +7,7 @@ import {
 
 initAnalyticsFromMeta();
 initVercelAnalytics();
+initVercelSpeedInsights();
 
 const settingsKey = 'snake.settings';
 const bestKey = 'snake.bestScore';
