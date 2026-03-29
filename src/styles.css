@@ -336,3 +336,148 @@ body {
     display: flex;
   }
 }
+
+
+/* Menu refinements */
+.menuHeader {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.menuTitle {
+  font-size: 30px;
+  line-height: 1.05;
+}
+
+.menuSubtitle {
+  margin-top: 6px;
+}
+
+.howTitle {
+  font-weight: 850;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+}
+
+.howList {
+  margin: 0 0 12px;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.howList li {
+  margin: 6px 0;
+}
+
+
+
+/* Game over popup */
+.gameOverOverlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(14, 15, 18, 0.55);
+  backdrop-filter: blur(3px);
+  z-index: 3;
+}
+
+.gameOverOverlay[hidden] {
+  display: none;
+}
+
+.gameCard {
+  width: min(420px, 92%);
+  background: rgba(21, 23, 32, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+}
+
+.gameTitle {
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  margin-bottom: 12px;
+}
+
+.scoreGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.scoreItem {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px;
+  background: rgba(36, 40, 58, 0.55);
+}
+
+.scoreLabel {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.scoreValue {
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+  font-size: 18px;
+}
+
+.gameRow {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+
+.field.fieldTight {
+  margin-bottom: 10px;
+}
+
+.lbList {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--text);
+  max-height: 220px;
+  overflow: auto;
+}
+
+.lbList li {
+  margin: 8px 0;
+  padding: 10px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(36, 40, 58, 0.55);
+  list-style-position: outside;
+}
+
+.lbRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.lbName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lbScore {
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+

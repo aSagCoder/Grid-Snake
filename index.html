@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="ga-measurement-id" content="" />
     <title>Snake</title>
-    <link rel="stylesheet" href="./src/styles.css?v=20260323-1" />
+    <link rel="stylesheet" href="./src/styles.css?v=20260329-4" />
   </head>
   <body>
     <main class="app">
@@ -41,6 +42,43 @@
               tabindex="0"
             ></div>
 
+            <div id="gameOver" class="gameOverOverlay" role="dialog" aria-label="Game over" hidden>
+              <div class="gameCard">
+                <div id="gameOverTitle" class="gameTitle">Game over</div>
+                <div class="scoreGrid">
+                  <div class="scoreItem">
+                    <div class="scoreLabel">Score</div>
+                    <div id="gameOverScore" class="scoreValue">0</div>
+                  </div>
+                  <div class="scoreItem">
+                    <div class="scoreLabel">Best</div>
+                    <div id="gameOverBest" class="scoreValue">0</div>
+                  </div>
+                </div>
+
+                <label class="field fieldTight">
+                  <span class="fieldLabel">Name (for saved score)</span>
+                  <input
+                    id="scoreName"
+                    class="fieldControl"
+                    type="text"
+                    maxlength="20"
+                    autocomplete="nickname"
+                    placeholder="Your name"
+                  />
+                </label>
+
+                <div class="gameRow">
+                  <button id="gameOverSave" class="btn" type="button">Save score</button>
+                  <button id="gameOverRestart" class="btn primary" type="button">Restart</button>
+                  <button id="gameOverMenu" class="btn" type="button">Menu</button>
+                </div>
+
+                <div id="scoreMsg" class="menuText" aria-live="polite"></div>
+                <div class="menuHint">R: restart. Esc: menu.</div>
+              </div>
+            </div>
+
             <div id="menu" class="menuOverlay" role="dialog" aria-label="Game menu">
               <div class="menuCard">
                 <div class="menuHeader">
@@ -51,8 +89,42 @@
                 <div class="menuScreens">
                   <div class="menuScreen" data-screen="main">
                     <button id="menuStart" class="menuBtn" type="button">Start</button>
+                    <button id="menuLeaderboard" class="menuBtn" type="button">Leaderboard</button>
+                    <button id="menuHowto" class="menuBtn" type="button">How to Play</button>
                     <button id="menuOptions" class="menuBtn" type="button">Options</button>
                     <button id="menuQuit" class="menuBtn" type="button">Quit</button>
+                  </div>
+
+                  <div class="menuScreen" data-screen="pause" hidden>
+                    <button id="pauseResume" class="menuBtn" type="button">Resume</button>
+                    <button id="pauseRestart" class="menuBtn" type="button">Restart</button>
+                    <button id="pauseLeaderboard" class="menuBtn" type="button">Leaderboard</button>
+                    <button id="pauseHowto" class="menuBtn" type="button">How to Play</button>
+                    <button id="pauseOptions" class="menuBtn" type="button">Options</button>
+                    <button id="pauseQuit" class="menuBtn" type="button">Quit</button>
+                  </div>
+
+                  <div class="menuScreen" data-screen="leaderboard" hidden>
+                    <div class="howTitle">Leaderboard</div>
+                    <div id="lbStatus" class="menuText">Loading...</div>
+                    <ol id="lbList" class="lbList"></ol>
+                    <div class="menuRow">
+                      <button id="lbBack" class="btn primary" type="button">Back</button>
+                    </div>
+                  </div>
+
+                  <div class="menuScreen" data-screen="howto" hidden>
+                    <div class="howTitle">How to Play</div>
+                    <ul class="howList">
+                      <li>Move the snake using Arrow keys or WASD.</li>
+                      <li>Eat the fruit to grow and increase your score.</li>
+                      <li>Avoid hitting the walls or your own body.</li>
+                      <li>Space pauses and opens the pause menu.</li>
+                      <li>R restarts the current run.</li>
+                    </ul>
+                    <div class="menuRow">
+                      <button id="howBack" class="btn primary" type="button">Back</button>
+                    </div>
                   </div>
 
                   <div class="menuScreen" data-screen="options" hidden>
@@ -99,7 +171,7 @@
                   </div>
                 </div>
 
-                <div class="menuHint">Enter: start. Esc: menu.</div>
+                <div class="menuHint">Space: pause/menu. Esc: back. Enter: start.</div>
               </div>
             </div>
           </div>
@@ -118,6 +190,6 @@
       </section>
     </main>
 
-    <script type="module" src="./src/main.js?v=20260323-1"></script>
+    <script type="module" src="./src/main.js?v=20260329-4"></script>
   </body>
 </html>

@@ -1,0 +1,27 @@
+﻿# Vercel
+.vercel/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Node
+node_modules/
+*.log
+
+# Python
+__pycache__/
+*.pyc
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local logs
+DEV_NOTES.md
+DAILY_LOG.md
+logs/
+
