@@ -64,6 +64,8 @@ To enable:
 
 The analytics tracking code is loaded via Vercel's runtime scripts (`/_vercel/insights/script.js` and `/_vercel/speed-insights/script.js`) and initialized in `src/analytics.js` (no bundler/package required).
 
+See `TROUBLESHOOTING.md` for common deployment/debug issues (leaderboard/KV setup and analytics pitfalls).
+
 ### Google Analytics 4 (Optional)
 
 If you also want a unique-visitors dashboard via Google Analytics 4:
