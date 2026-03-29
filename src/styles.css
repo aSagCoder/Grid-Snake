@@ -1,0 +1,338 @@
+﻿:root {
+  --bg: #0e0f12;
+  --panel: #151720;
+  --text: #e9e9ee;
+  --muted: #9aa0aa;
+  --grid: rgba(255, 255, 255, 0.07);
+  --snake: #c8f169;
+  --snakeHead: #eaff9a;
+  --food: #ff6b6b;
+  --btn: #24283a;
+  --btnHover: #2f3550;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 800px at 10% 10%, rgba(200, 241, 105, 0.08), transparent 55%),
+    radial-gradient(900px 700px at 95% 20%, rgba(255, 107, 107, 0.08), transparent 50%),
+    var(--bg);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.35;
+}
+
+.app {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 18px;
+}
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 2px 14px;
+}
+
+.title {
+  font-weight: 750;
+  letter-spacing: 0.02em;
+  font-size: 22px;
+}
+
+.stats {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+}
+
+.stat {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.label {
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.value {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.panel {
+  background: color-mix(in srgb, var(--panel) 92%, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 2px 2px 10px;
+}
+
+.status {
+  min-height: 1.2em;
+  color: var(--muted);
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--btn);
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--btnHover);
+}
+
+.btn.primary {
+  background: color-mix(in srgb, var(--snake) 18%, var(--btn));
+  border-color: rgba(200, 241, 105, 0.25);
+}
+
+.btn.primary:hover {
+  background: color-mix(in srgb, var(--snake) 24%, var(--btnHover));
+}
+
+.boardWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.boardContainer {
+  position: relative;
+}
+
+.board {
+  --cols: 20;
+  --rows: 20;
+  width: min(74vmin, 560px);
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  grid-template-rows: repeat(var(--rows), 1fr);
+  gap: 1px;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  outline: none;
+}
+
+.board:focus {
+  box-shadow: 0 0 0 3px rgba(200, 241, 105, 0.15);
+}
+
+.cell {
+  background: var(--grid);
+  border-radius: 4px;
+}
+
+.cell.snake {
+  background: color-mix(in srgb, var(--snake) 88%, #0b0c10);
+}
+
+.cell.snake.head {
+  background: var(--snakeHead);
+}
+
+.cell.food {
+  background: var(--food);
+}
+
+.help {
+  color: var(--muted);
+  font-size: 13px;
+  padding: 10px 2px 0;
+}
+
+.menuOverlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(14, 15, 18, 0.62);
+  backdrop-filter: blur(4px);
+}
+
+.menuOverlay[hidden] {
+  display: none;
+}
+
+.menuCard {
+  width: min(440px, 92%);
+  background: rgba(21, 23, 32, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.menuHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 12px;
+}
+
+.menuTitle {
+  font-weight: 850;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+}
+
+.menuSubtitle {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.menuBtn {
+  width: 100%;
+  text-align: left;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(36, 40, 58, 0.9);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 650;
+  margin-bottom: 10px;
+}
+
+.menuBtn:hover {
+  background: rgba(47, 53, 80, 0.9);
+}
+
+.menuText {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 8px 0 12px;
+}
+
+.field {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.fieldLabel {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.fieldControl {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(36, 40, 58, 0.75);
+  color: var(--text);
+  padding: 10px 10px;
+}
+
+.menuRow {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  padding-top: 6px;
+}
+
+.menuHint {
+  color: var(--muted);
+  font-size: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 12px;
+}
+
+.touchControls {
+  margin-top: 14px;
+  display: none;
+  justify-content: center;
+}
+
+.dpad {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 10px;
+  width: min(360px, 96vw);
+}
+
+.pad {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--btn);
+  color: var(--text);
+  padding: 14px 10px;
+  border-radius: 14px;
+  font-weight: 650;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.pad:active {
+  background: var(--btnHover);
+}
+
+.padUp {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.padLeft {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.padRight {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.padDown {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+@media (pointer: coarse) {
+  .touchControls {
+    display: flex;
+  }
+}
