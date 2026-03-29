@@ -1,4 +1,4 @@
-﻿import { initAnalyticsFromMeta } from './analytics.js';
+import { initAnalyticsFromMeta, initVercelAnalytics } from './analytics.js';
 import {
   createInitialState,
   step,
@@ -6,6 +6,7 @@ import {
 } from './snakeEngine.js?v=20260329-4';
 
 initAnalyticsFromMeta();
+initVercelAnalytics();
 
 const settingsKey = 'snake.settings';
 const bestKey = 'snake.bestScore';

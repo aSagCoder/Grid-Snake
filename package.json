@@ -1,0 +1,19 @@
+{
+  "name": "grid-snake",
+  "version": "1.0.0",
+  "description": "A minimal classic Snake game",
+  "type": "module",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "test": "node test/run-tests.mjs"
+  },
+  "keywords": [
+    "snake",
+    "game"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^1.1.1"
+  }
+}
